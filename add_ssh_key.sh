@@ -29,6 +29,4 @@ add_pub_key()
 
 gen_ssh_key
 add_pub_key
-echo "done"
-exit 0
 

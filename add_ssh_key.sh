@@ -27,6 +27,22 @@ add_pub_key()
 	rm ./key.tmp2~ ./key.tmp~
 }
 
+help()
+{
+	cat <<EOF
+
+	USAGE: $0 user@hostname
+
+	EXAMPLES:
+	$0 root@192.168.1.23
+EOF
+}
+
+if { [ -z "$1" ] && [ -t 0 ] ; } || [ "$1" == '-h' ]
+then
+	help
+	exit 0
+fi
 gen_ssh_key
 add_pub_key
 

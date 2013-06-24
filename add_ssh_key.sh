@@ -29,11 +29,10 @@ add_pub_key()
 
 help()
 {
-	cat <<EOF
+cat <<EOF
+USAGE: $0 user@hostname
 
-	USAGE: $0 user@hostname
-
-	EXAMPLES:
+EXAMPLES:
 	$0 root@192.168.1.23
 EOF
 }

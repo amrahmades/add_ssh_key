@@ -11,8 +11,8 @@ gen_ssh_key()
 	
 	if [ ! -f "$HOME/.ssh/id_rsa.pub" ]; then
 		cd "$HOME"/.ssh && ssh-keygen -t rsa -N "" -f "id_rsa"
+		ssh-add "$HOME/.ssh/id_rsa"
 	fi
-	ssh-add "$HOME/.ssh/id_rsa"
 }
 
 # 添加到远程主机

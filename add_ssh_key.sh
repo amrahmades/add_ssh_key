@@ -19,13 +19,13 @@ gen_ssh_key()
 add_pub_key()
 {
 	echo "connecting..."
-	scp "$SERVERIP":~/.ssh/authorized_keys ./key.tmp~   # 输入口令
-	cat "$HOME"/.ssh/id_rsa.pub >> ./key.tmp~
-	sort ./key.tmp~ | uniq > ./key.tmp2~
+	scp "$SERVERIP":~/.ssh/authorized_keys /tmp/key.tmp~   # 输入口令
+	cat "$HOME"/.ssh/id_rsa.pub >> /tmp/key.tmp~
+	sort /tmp/key.tmp~ | uniq > /tmp/key.tmp2~
 	echo "connecting..."
-	scp ./key.tmp2~ "$SERVERIP":~/.ssh/authorized_keys
+	scp /tmp/key.tmp2~ "$SERVERIP":~/.ssh/authorized_keys
 	
-	rm ./key.tmp2~ ./key.tmp~
+	rm /tmp/key.tmp2~ /tmp/key.tmp~
 }
 
 help()

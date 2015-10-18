@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SERVERIP=$1
+REMOTE=$1
 
 # 生成密钥
 gen_ssh_key()
@@ -18,14 +18,8 @@ gen_ssh_key()
 # 添加到远程主机
 add_pub_key()
 {
-	echo "connecting..."
-	scp "$SERVERIP":~/.ssh/authorized_keys /tmp/key.tmp~   # 输入口令
-	cat "$HOME"/.ssh/id_rsa.pub >> /tmp/key.tmp~
-	sort /tmp/key.tmp~ | uniq > /tmp/key.tmp2~
-	echo "connecting..."
-	scp /tmp/key.tmp2~ "$SERVERIP":~/.ssh/authorized_keys
-	
-	rm /tmp/key.tmp2~ /tmp/key.tmp~
+	scp "$HOME"/.ssh/id_rsa.pub "$REMOTE":/tmp
+	ssh "$REMOTE" "if [ ! -d .ssh ]; then mkdir .ssh; chmod 700 .ssh; fi; cat /tmp/id_rsa.pub >> .ssh/authorized_keys; chmod 640 .ssh/authorized_keys; sort -u -o .ssh/authorized_keys .ssh/authorized_keys; rm /tmp/id_rsa.pub"
 }
 
 help()

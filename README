@@ -1,1 +1,1 @@
-为了免验证通过 ssh 登录远程主机，可以执行一次这个脚本。
+Run this script, then SSH the remote host without password.

@@ -1,1 +1,3 @@
+Warning: THIS PACKAGE IS DEPRECATED. PLEASE TRY ssh-copy-id. 
+
 Run this script, then SSH the remote host without password.
